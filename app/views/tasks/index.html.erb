@@ -2,6 +2,20 @@
 
 <h1>Tasks</h1>
 
+<%= search_form_for @q, url: search_tasks_path do |f| %>
+  <%= f.label :title_or_description_gt, 'キーワード' %>
+  <%= f.search_field :title_or_description_gt %><br>
+  <%= f.label :age_eq, '期間' %>
+  <%= f.date_field :deadline_gteq %>〜
+  <%= f.date_field :deadline_lteq %>
+  <%= f.label :status, 'ステータス' %>
+    <%= f.radio_button :status %><%= '指定しない' %>
+    <%= f.radio_button :status, 'todo' %><%= label.name %>
+    <%= f.radio_button :status, 'doing' %><%= label.name %>
+    <%= f.radio_button :status, 'done' %><%= label.name %>
+  <%= f.submit 'Search' %>
+<% end %>
+
 <table>
   <thead>
     <tr>
